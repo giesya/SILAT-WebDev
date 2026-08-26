@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import Login from './Login.jsx'
 import Beranda from './Beranda.jsx'
 import Dashboard from './Dashboard.jsx'
+import IUDaftarPendokSIUP from './Layanan/Permohonan/IU-DaftarPendokSIUP.jsx'
+import IUDaftarPermohonan from './Layanan/Permohonan/IU-DaftarPermohonan.jsx'
+import IUDaftarVerifikasi from './Layanan/Permohonan/IU-DaftarVerifikasi.jsx'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -41,6 +44,18 @@ function App() {
   }
 
   if (!isLoggedIn) return <Login onLogin={handleLogin} />
+
+  if (currentPath === '/dashboard/permohonan/izin-usaha/daftar-pendek-siup') {
+    return <IUDaftarPendokSIUP onLogout={handleLogout} />
+  }
+
+  if (currentPath === '/dashboard/permohonan/izin-usaha/daftar-permohonan') {
+    return <IUDaftarPermohonan onLogout={handleLogout} />
+  }
+
+  if (currentPath === '/dashboard/permohonan/izin-usaha/daftar-verifikasi') {
+    return <IUDaftarVerifikasi onLogout={handleLogout} />
+  }
 
   if (currentPath.startsWith('/dashboard')) {
     return <Dashboard onLogout={handleLogout} />

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-//Dummy data for demonstration purposes
-const applications = [
+const applications = [ //Dummy filter options for demonstration purposes
   {
     id: 'siup',
     applicant: 'Badan Hukum',
@@ -26,7 +25,7 @@ const applications = [
   },
 ]
 
-const positionDetails = {
+const positionDetails = { //Dummy filter options for demonstration purposes
   siup: {
     title: 'PT Laut Nusantara · SIUP',
     steps: [
@@ -45,7 +44,7 @@ const positionDetails = {
 }
 
 const layananMenu = [
-  { label: 'Permohonan', children: [{ label: 'Izin Usaha', children: ['Daftar Pendek SIUP', 'Daftar Permohonan', 'Daftar Verifikasi'] }, { label: 'Izin Kapal', children: ['Daftar Pendek SIPI/SIKPI', 'Daftar Verifikasi'] }, { label: 'Izin Rumpon', children: ['Distribusi Dokumen', 'Approval SIPR', 'Daftar Permohonan', 'Daftar Verifikasi'] }] },
+  { label: 'Permohonan', children: [{ label: 'Izin Usaha', children: ['Daftar Pendok SIUP', 'Daftar Permohonan', 'Daftar Verifikasi'] }, { label: 'Izin Kapal', children: ['Daftar Pendok SIPI/SIKPI', 'Daftar Verifikasi'] }, { label: 'Izin Rumpon', children: ['Distribusi Dokumen', 'Approval SIPR', 'Daftar Permohonan', 'Daftar Verifikasi'] }] },
   { label: 'Pungutan', children: [{ label: 'SPP–PPP', children: ['Daftar Permohonan', 'Daftar SPP–PPP'] }, { label: 'SPP–PHP', children: ['Daftar Permohonan', 'Daftar SPP–PHP'] }, { label: 'SPP–PPKA', children: ['Daftar Permohonan', 'Daftar SPP–PPKA'] }, { label: 'Pungutan Rumpon', children: ['Daftar SPP Rumpon', 'Daftar Permohonan'] }, { label: 'Simulasi Pungutan', children: ['Simulasi PPP', 'Simulasi PHP', 'Simulasi PPKA'] }] },
   { label: 'Perizinan & Dokumen', children: [{ label: 'Pencetakan', children: [{ label: 'Izin Usaha', children: ['Distribusi Pencetakan', 'Daftar Permohonan', 'Daftar Izin Usaha'] }, { label: 'Izin Kapal', children: ['Distribusi Pencetakan', 'Daftar Permohonan', 'Daftar Izin Kapal'] }, { label: 'Izin Rumpon', children: ['Daftar Pemilik', 'Daftar Permohonan'] }] }, { label: 'Pembekuan', children: ['Pembekuan Izin Usaha', 'Pembekuan Izin Kapal', 'Daftar Pembekuan'] }, { label: 'Pencabutan', children: ['Pencabutan Izin Usaha', 'Pencabutan Izin Kapal', 'Daftar Pencabutan Izin'] }] },
   { label: 'Data & Pusat', children: ['Daftar Izin Pusat', 'SIUP dan Kapal', 'Kemenhub Kapal'] },
@@ -151,7 +150,7 @@ function Dashboard({ onLogout }) {
           <div className="header-tools">
             <div className="profile-wrap">
               <button className="profile-toggle" type="button" aria-expanded={isProfileOpen} onClick={() => { setIsProfileOpen((value) => !value); setOpenMenu(null) }}>
-                <span className="profile-meta"><span className="profile-name">Andi Rizky</span><span className="profile-role">Pemohon</span></span>
+                <span className="profile-meta"><span className="profile-name">Andi Rizky</span></span>
                 <span className="dropdown-caret" aria-hidden="true">▾</span>
               </button>
               {isProfileOpen && <div className="profile-menu" role="menu"><a href="/beranda" className="profile-menu-item"><span className="menu-item-icon" aria-hidden="true">⚙</span><span>Pengaturan Akun</span></a><button type="button" className="logout-link profile-menu-item" onClick={onLogout}><span className="menu-item-icon" aria-hidden="true">↪</span><span>Logout</span></button></div>}
@@ -175,7 +174,7 @@ function Dashboard({ onLogout }) {
         <section className="dashboard-panel" aria-labelledby="table-title">
           <div className="dashboard-panel-header">
             <div><h2 id="table-title">Daftar Permohonan</h2><p>Informasi terbaru proses perizinan Anda.</p></div>
-            <label className="search-box" aria-label="Cari permohonan"><span aria-hidden="true">⌕</span><input type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); setCurrentPage(1) }} placeholder="Cari permohonan..." /></label>
+            <div className="search-actions"><label className="search-box" aria-label="Cari permohonan"><span aria-hidden="true">⌕</span><input type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); setCurrentPage(1) }} placeholder="Cari permohonan..." /></label><button className="search-button" type="button">Cari</button></div>
           </div>
 
           <div className="table-wrap">

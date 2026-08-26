@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
-//Dummy data for demonstration purposes
-const izinData = {
+const izinData = { //Dummy filter options for demonstration purposes
   siup: [
     { owner: 'PT Laut Nusantara', person: 'Andi Rizky', npwp: '01.234.567.8-901.000', izin: 'SIUP-2024-00128', rev: '02', mulai: '12 Jan 2024', akhir: '12 Jan 2027' },
     { owner: 'CV Samudra Jaya', person: 'Dewi Lestari', npwp: '01.118.920.8-912.001', izin: 'SIUP-2024-00410', rev: '01', mulai: '05 Mei 2024', akhir: '05 Mei 2027' },
     { owner: 'PT Bahari Maju', person: 'Rizal Hidayat', npwp: '01.336.778.2-912.009', izin: 'SIUP-2024-00672', rev: '03', mulai: '02 Jul 2024', akhir: '02 Jul 2027' },
   ],
-  sipi: [
+  sipi: [ 
     { owner: 'PT Samudra Sejahtera', person: 'Andi Rizky', npwp: '01.234.567.8-901.000', izin: 'SIPI-2024-00456', rev: '01', mulai: '08 Mar 2024', akhir: '08 Mar 2026' },
     { owner: 'CV Mina Bahari', person: 'Dewi Lestari', npwp: '01.201.998.7-902.011', izin: 'SIKPI-2024-00312', rev: '02', mulai: '12 Apr 2024', akhir: '12 Apr 2027' },
     { owner: 'CV Anamora', person: 'Yongky', npwp: '01.234.441.7-908.099', izin: 'SIKPI-2024-00777', rev: '03', mulai: '8 Apr 2024', akhir: '8 Juni 2026' },
@@ -16,8 +15,8 @@ const izinData = {
 
 const layananMenu = [
   { label: 'Permohonan', children: [
-    { label: 'Izin Usaha', children: ['Daftar Pendek SIUP', 'Daftar Permohonan', 'Daftar Verifikasi'] },
-    { label: 'Izin Kapal', children: ['Daftar Pendek SIPI/SIKPI', 'Daftar Verifikasi'] },
+    { label: 'Izin Usaha', children: ['Daftar Pendok SIUP', 'Daftar Permohonan', 'Daftar Verifikasi'] },
+    { label: 'Izin Kapal', children: ['Daftar Pendok SIPI/SIKPI', 'Daftar Verifikasi'] },
     { label: 'Izin Rumpon', children: ['Distribusi Dokumen', 'Approval SIPR', 'Daftar Permohonan', 'Daftar Verifikasi'] },
   ] },
   { label: 'Pungutan', children: [
@@ -53,7 +52,7 @@ function MenuTree({ items, level = 0 }) {
   })
 }
 
-const documentDetails = {
+const documentDetails = { //Dummy filter options for demonstration purposes
   kkp: {
     title: 'Dokumen KKP',
     number: 'SIUP-2024-00128',
@@ -203,10 +202,13 @@ function Beranda({ onLogout }) {
               <h2 id="izin-aktif-title">Preview Izin Aktif</h2>
               <p>Lihat ringkasan izin usaha yang masih aktif.</p>
             </div>
-            <label className="search-box" aria-label="Cari izin aktif">
-              <span aria-hidden="true">⌕</span>
-              <input type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); setCurrentPage(1) }} placeholder="Cari izin aktif..." />
-            </label>
+            <div className="search-actions">
+              <label className="search-box" aria-label="Cari izin aktif">
+                <span aria-hidden="true">⌕</span>
+                <input type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); setCurrentPage(1) }} placeholder="Cari izin aktif..." />
+              </label>
+              <button className="search-button" type="button">Cari</button>
+            </div>
           </div>
 
           <div className="tab-row" role="tablist" aria-label="Pilihan jenis izin">
