@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Eye, EyeOff, ShieldCheck } from 'lucide-react'
 
 function Login({ onLogin }) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -83,16 +84,11 @@ function Login({ onLogin }) {
                   aria-pressed={isPasswordVisible}
                   onClick={() => setIsPasswordVisible((value) => !value)}
                 >
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    {isPasswordVisible ? (
-                      <path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.2A10.8 10.8 0 0 1 12 5c5.2 0 8.7 4.5 9.8 7a15.7 15.7 0 0 1-3.1 4.1M6.2 6.2C4.6 7.3 3.5 9 2.2 12c1.1 2.5 4.6 7 9.8 7 1 0 2-.2 2.9-.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    ) : (
-                      <>
-                        <path d="M2.2 12C3.3 9.5 6.8 5 12 5s8.7 4.5 9.8 7c-1.1 2.5-4.6 7-9.8 7s-8.7-4.5-9.8-7Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                        <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.8" />
-                      </>
-                    )}
-                  </svg>
+                  {isPasswordVisible ? (
+                    <EyeOff className="w-4 h-4 text-slate-500" />
+                  ) : (
+                    <Eye className="w-4 h-4 text-slate-500" />
+                  )}
                 </button>
               </div>
             </div>
@@ -106,7 +102,10 @@ function Login({ onLogin }) {
             <button type="submit" className="login-button">Login</button>
           </form>
 
-          <p className="footer-note">© 2026 SILAT · Direktorat Jenderal Prikanan Tangkap</p>
+          <p className="footer-note flex items-center justify-center gap-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+            <span>&copy; 2026 SILAT · Direktorat Jenderal Perikanan Tangkap</span>
+          </p>
         </div>
       </section>
     </main>
